@@ -1,0 +1,108 @@
+﻿#logo {
+    margin:0;
+    padding: 0;
+    width: 80px;
+    height: 50px;
+    border-radius: 40%;
+    display: block;
+}
+#logbutton{
+    margin:20px;
+}
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 50px;
+    margin-top:0;
+}
+
+#homeimg {
+    width: 600px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.home-text {
+    max-width: 500px;
+}
+.large-textbox {
+    width: 400px;
+}
+.register-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+    margin: 32px 0;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.login-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+    margin: 32px 0;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.income-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+    margin: 32px 0;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;    
+}
+.report-box {
+    background: #fff;
+
+   
+    padding: 32px 24px;
+    margin: 32px 0;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Reminder {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+    margin: 32px 0;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.add_expense {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+    margin: 32px 0;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.note-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+    margin: 32px 0;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
