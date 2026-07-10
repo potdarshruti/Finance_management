@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bootstrap.min.css" />
+    <Content Include="budget.aspx" />
     <Content Include="expense.aspx" />
     <Content Include="expensereport.aspx" />
     <Content Include="Home.aspx" />
@@ -84,6 +85,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="budget.aspx.cs">
+      <DependentUpon>budget.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="budget.aspx.designer.cs">
+      <DependentUpon>budget.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChartHelper.cs" />
+    <Compile Include="PasswordHelper.cs" />
+    <Compile Include="ValidationHelper.cs" />
     <Compile Include="expense.aspx.cs">
       <DependentUpon>expense.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

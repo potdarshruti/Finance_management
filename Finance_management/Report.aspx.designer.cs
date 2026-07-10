@@ -14,76 +14,23 @@ namespace Finance_management
     public partial class Report
     {
 
-        /// <summary>
-        /// txtfrom1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtfrom1;
-
-        /// <summary>
-        /// txtto1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtto1;
-
-        /// <summary>
-        /// btnsubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnsubmit;
-
-        /// <summary>
-        /// txtfrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtfrom;
 
-        /// <summary>
-        /// txtto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtto;
 
-        /// <summary>
-        /// btnIncome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIncome;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
 
-        /// <summary>
-        /// gvRecords control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvRecords;
+        protected global::System.Web.UI.WebControls.Panel pnlResults;
 
-        /// <summary>
-        /// lbltotal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbltotal;
+        protected global::System.Web.UI.WebControls.Label lblIncome;
+
+        protected global::System.Web.UI.WebControls.Label lblExpense;
+
+        protected global::System.Web.UI.WebControls.Label lblSavings;
+
+        protected global::System.Web.UI.WebControls.GridView gvIncomeCat;
+
+        protected global::System.Web.UI.WebControls.GridView gvExpenseCat;
+        protected global::System.Web.UI.WebControls.Literal litCharts;
     }
 }

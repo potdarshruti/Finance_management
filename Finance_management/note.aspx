@@ -33,7 +33,10 @@
      <div class="col-md-2"></div>
      <div class="col-md-8">
          <div class="table-responsive">
-             <asp:GridView ID="gvdata" CssClass="table table-striped" runat="server" DataKeyNames="srno" OnRowDeleting="gvdata_RowDeleting" AutoGenerateColumns="false" EmptyDataText="No data found" ItemStyle-Width="800">
+             <asp:GridView ID="gvdata" CssClass="table table-striped" runat="server" DataKeyNames="srno"
+                 OnRowDeleting="gvdata_RowDeleting" OnRowEditing="gvdata_RowEditing"
+                 OnRowCancelingEdit="gvdata_RowCancelingEdit" OnRowUpdating="gvdata_RowUpdating"
+                 AutoGenerateColumns="false" EmptyDataText="No data found" ItemStyle-Width="800">
              <Columns>
                  <asp:TemplateField HeaderText="Sr No" ItemStyle-Width="70">
                      <ItemTemplate>
@@ -44,17 +47,22 @@
                      <ItemTemplate>
                          <asp:Label ID="ntittle" runat="server" Text='<%# Eval("note_tittle") %>'></asp:Label>
                      </ItemTemplate>
+                     <EditItemTemplate>
+                         <asp:TextBox ID="txtEditTitle" runat="server" CssClass="form-control" Text='<%# Bind("note_tittle") %>' />
+                     </EditItemTemplate>
                  </asp:TemplateField>
                  <asp:TemplateField HeaderText="Remark" ItemStyle-Width="150">
                      <ItemTemplate>
                          <asp:Label ID="nremark" runat="server" Text='<%# Eval("note_remark") %>'></asp:Label>
                      </ItemTemplate>
-
+                     <EditItemTemplate>
+                         <asp:TextBox ID="txtEditRemark" runat="server" CssClass="form-control" TextMode="MultiLine" Text='<%# Bind("note_remark") %>' />
+                     </EditItemTemplate>
                   </asp:TemplateField>
-         
+                 <asp:CommandField ShowEditButton="True" EditText="Edit" UpdateText="Update" CancelText="Cancel" ControlStyle-CssClass="btn btn-sm btn-warning" />
                  <asp:TemplateField HeaderText="Delete">
                     <ItemTemplate>
-                        <asp:Button ID="deletebtn" CssClass="btn btn-danger" runat="server" CommandName="Delete"
+                        <asp:Button ID="deletebtn" CssClass="btn btn-danger btn-sm" runat="server" CommandName="Delete"
                             Text="Delete" OnClientClick="return confirm('Are you sure?');" />
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -73,5 +81,6 @@ function valid() {
         return false;
     }
     return true;
+    }
     </script>
 </asp:Content>

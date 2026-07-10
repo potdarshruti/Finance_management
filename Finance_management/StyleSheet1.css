@@ -27,6 +27,69 @@
 .home-text {
     max-width: 500px;
 }
+.home-content {
+    flex: 1;
+    min-width: 320px;
+}
+.dashboard-heading {
+    margin-top: 24px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+.dashboard-cards {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+.dashboard-card {
+    flex: 1;
+    min-width: 160px;
+    padding: 20px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.dashboard-card .card-label {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #666;
+    font-weight: 600;
+}
+.dashboard-card .card-value {
+    font-size: 28px;
+    font-weight: 700;
+}
+.income-card {
+    border-left: 4px solid #28a745;
+}
+.expense-card {
+    border-left: 4px solid #dc3545;
+}
+.balance-card {
+    border-left: 4px solid #375a7f;
+}
+.chart-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 24px 0;
+}
+.chart-box {
+    flex: 1;
+    min-width: 260px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.chart-box h5 {
+    text-align: center;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
 .large-textbox {
     width: 400px;
 }

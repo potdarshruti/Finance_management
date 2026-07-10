@@ -24,7 +24,7 @@ namespace Finance_management
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("login.aspx");
         }
         protected void btnLogout_Click(object sender, EventArgs e)
         {

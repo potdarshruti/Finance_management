@@ -1,133 +1,79 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Index.Master" AutoEventWireup="true" CodeBehind="Report.aspx.cs" Inherits="Finance_management.Report" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="main-container report-box" style="text-align:center">
-    <div class="page-title">
-        <div class="row gutters">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <h1 class="title" style="text-align:center">Income Report</h1>
-            </div>
-        </div>
-		<!-- Row start -->
-        <div class="row gutters">
+    <div class="main-container report-box">
+        <h1 class="title" style="text-align:center">Profit / Loss Report</h1>
 
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Income Report</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row gutters">
-                            <div class="col-xl-4 col-lglg-4 col-md-4 col-sm-4 col-12">
-                                <div class="form-group">
-                                    <label for="txttitle">From <span style="color: red">*</span></label>
-                                    <asp:TextBox runat="server" TextMode="Date" CssClass="form-control" ID="txtfrom1"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lglg-4 col-md-4 col-sm-4 col-12">
-                                <div class="form-group">
-                                    <label for="txttitle">To <span style="color: red">*</span></label>
-                                    <asp:TextBox runat="server" TextMode="Date" CssClass="form-control" ID="txtto1"></asp:TextBox>
-                                </div>
-                            </div>
-                         <div class="col-xl-4 col-lglg-4 col-md-4 col-sm-4 col-12">
-                            <div class="form-group">
-                                <asp:Button runat="server"  ID="btnsubmit" Text="Submit" CssClass="btn btn-primary my-1" />
-                            </div>   
-                        
-                      
-                    </div></div>
-                    </div></div>
-		</div></div>
-            <div class="row gutters">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <h1 class="title" style="text-align:center">Expense Report</h1>
+        <div class="row gutters">
+            <div class="col-xl-4 col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label>From <span style="color: red">*</span></label>
+                    <asp:TextBox runat="server" TextMode="Date" CssClass="form-control" ID="txtfrom" />
                 </div>
             </div>
-            <!-- Row start -->
-            <div class="row gutters">
+            <div class="col-xl-4 col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label>To <span style="color: red">*</span></label>
+                    <asp:TextBox runat="server" TextMode="Date" CssClass="form-control" ID="txtto" />
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <asp:Button runat="server" ID="btnSubmit" OnClick="btnSubmit_Click" Text="Generate Report" CssClass="btn btn-primary d-block" />
+                </div>
+            </div>
+        </div>
 
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Income Report</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="row gutters">
-                                <div class="col-xl-4 col-lglg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="txttitle">From <span style="color: red">*</span></label>
-                                        <asp:TextBox runat="server" TextMode="Date" CssClass="form-control" ID="txtfrom"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lglg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="form-group">
-                                        <label for="txttitle">To <span style="color: red">*</span></label>
-                                        <asp:TextBox runat="server" TextMode="Date" CssClass="form-control" ID="txtto"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lglg-4 col-md-4 col-sm-4 col-12">
-                                   <div class="form-group">
-                                       <asp:Button runat="server"  ID="btnIncome" OnClick="btnIncome_Click" Text="Submit" CssClass="btn btn-primary my-1" />
-                                   </div>
-                                </div>
-                                 <asp:GridView runat="server"   CssClass="display table table-striped table-bordered" Style="width: 100%" ID="gvRecords" EmptyDataText="No  Data Found"  DataKeyNames="Srno" AutoGenerateColumns="false">
-                                <Columns>
+        <asp:Panel ID="pnlResults" runat="server" Visible="false">
+            <div class="dashboard-cards" style="margin-top: 24px;">
+                <div class="dashboard-card income-card">
+                    <p class="card-label">Total income</p>
+                    <asp:Label ID="lblIncome" runat="server" CssClass="card-value text-success" />
+                </div>
+                <div class="dashboard-card expense-card">
+                    <p class="card-label">Total expense</p>
+                    <asp:Label ID="lblExpense" runat="server" CssClass="card-value text-danger" />
+                </div>
+                <div class="dashboard-card balance-card">
+                    <p class="card-label">Net savings</p>
+                    <asp:Label ID="lblSavings" runat="server" CssClass="card-value" />
+                </div>
+            </div>
 
-                                    <asp:TemplateField HeaderText="Srno">
-                                        <ItemTemplate>
-                                            <%#Container.DataItemIndex+1 %>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                     
-                                    <asp:BoundField DataField="in_date" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" />
-                                    <asp:TemplateField HeaderText="Income Date">
-                                        <ItemTemplate>
+            <h4 class="dashboard-heading">Income by category</h4>
+            <asp:GridView runat="server" CssClass="table table-striped" ID="gvIncomeCat" AutoGenerateColumns="false" EmptyDataText="No income in this period">
+                <Columns>
+                    <asp:BoundField DataField="Category" HeaderText="Category" />
+                    <asp:BoundField DataField="Total" HeaderText="Amount" DataFormatString="{0:N2}" />
+                </Columns>
+            </asp:GridView>
 
-                                            <asp:Label runat="server" Text='<%# Eval("in_date")%>'></asp:Label>
+            <h4 class="dashboard-heading">Expense by category</h4>
+            <asp:GridView runat="server" CssClass="table table-striped" ID="gvExpenseCat" AutoGenerateColumns="false" EmptyDataText="No expense in this period">
+                <Columns>
+                    <asp:BoundField DataField="Category" HeaderText="Category" />
+                    <asp:BoundField DataField="Total" HeaderText="Amount" DataFormatString="{0:N2}" />
+                </Columns>
+            </asp:GridView>
 
-                                        </ItemTemplate>
-                                        
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Category">
-                                        <ItemTemplate>
-
-                                            <asp:Label runat="server" Text='<%# Eval("in_category")%>'></asp:Label>
-
-                                        </ItemTemplate>
-                                        
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Amount">
-                                        <ItemTemplate>
-
-                                            <asp:Label runat="server" Text='<%# Eval("in_amount")%>'></asp:Label>
-
-                                        </ItemTemplate>
-                                        
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Remark">
-                                        <ItemTemplate>
-
-                                            <asp:Label runat="server" Text='<%# Eval("in_remark")%>'></asp:Label>
-
-                                        </ItemTemplate>
-                                        
-                                    </asp:TemplateField>
-                                     
-                                   
-
-
-                                </Columns>
-
-                            </asp:GridView>
-                        <div style="margin-top: 20px">
-                            <label>Total Amount : </label>
-                            <asp:Label Style="font-size: 20px; font-weight: bold;" runat="server" ID="lbltotal"></asp:Label>
-                            &#8377;
-                        </div>
-
-            </div></div></div>
-</div>
-		</div></div></div>
+            <div class="chart-row">
+                <div class="chart-box">
+                    <h5>Income vs Expense</h5>
+                    <canvas id="plChartSummary" height="200"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h5>Expense breakdown</h5>
+                    <canvas id="plChartExpense" height="200"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h5>Income breakdown</h5>
+                    <canvas id="plChartIncome" height="200"></canvas>
+                </div>
+            </div>
+            <asp:Literal ID="litCharts" runat="server" />
+        </asp:Panel>
+    </div>
 </asp:Content>

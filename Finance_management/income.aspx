@@ -43,7 +43,11 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <div class="table-responsive">
-                        <asp:GridView ID="gvdata" CssClass="table table-striped" runat="server" DataKeyNames="srno" OnRowDeleting="gvdata_RowDeleting" AutoGenerateColumns="false" EmptyDataText="No data found" ItemStyle-Width="800">
+                        <asp:GridView ID="gvdata" CssClass="table table-striped" runat="server" DataKeyNames="srno"
+                            OnRowDeleting="gvdata_RowDeleting" OnRowEditing="gvdata_RowEditing"
+                            OnRowCancelingEdit="gvdata_RowCancelingEdit" OnRowUpdating="gvdata_RowUpdating"
+                            OnRowDataBound="gvdata_RowDataBound" AutoGenerateColumns="false"
+                            EmptyDataText="No data found" ItemStyle-Width="800">
                         <Columns>
                             <asp:TemplateField HeaderText="Sr No" ItemStyle-Width="70">
                                 <ItemTemplate>
@@ -52,29 +56,45 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Date" ItemStyle-Width="150">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbldate" runat="server" Text='<%# Eval("in_date") %>'></asp:Label>
+                                    <asp:Label ID="lbldate" runat="server" Text='<%# Eval("in_date", "{0:yyyy-MM-dd}") %>'></asp:Label>
                                 </ItemTemplate>
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txtEditDate" runat="server" TextMode="Date" CssClass="form-control"
+                                        Text='<%# Eval("in_date", "{0:yyyy-MM-dd}") %>' />
+                                </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Category" ItemStyle-Width="150">
                                 <ItemTemplate>
                                     <asp:Label ID="lblcat" runat="server" Text='<%# Eval("in_category") %>'></asp:Label>
                                 </ItemTemplate>
-
+                                <EditItemTemplate>
+                                    <asp:DropDownList ID="ddlEditCat" runat="server" CssClass="form-control">
+                                        <asp:ListItem Text="Salaried" Value="Salaried" />
+                                        <asp:ListItem Text="Business" Value="Business" />
+                                        <asp:ListItem Text="Other" Value="Other" />
+                                    </asp:DropDownList>
+                                </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Amount" ItemStyle-Width="150">
                                 <ItemTemplate>
                                     <asp:Label ID="lblamount" runat="server" Text='<%# Eval("in_amount") %>'></asp:Label>
                                 </ItemTemplate>
-
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txtEditAmt" runat="server" CssClass="form-control" Text='<%# Bind("in_amount") %>' />
+                                </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Remark" ItemStyle-Width="150">
                                 <ItemTemplate>
                                     <asp:Label ID="lblremark" runat="server" Text='<%# Eval("in_remark") %>'></asp:Label>
                                 </ItemTemplate>
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txtEditRemark" runat="server" CssClass="form-control" Text='<%# Bind("in_remark") %>' />
+                                </EditItemTemplate>
                             </asp:TemplateField>
+                            <asp:CommandField ShowEditButton="True" EditText="Edit" UpdateText="Update" CancelText="Cancel" ControlStyle-CssClass="btn btn-sm btn-warning" />
                             <asp:TemplateField HeaderText="Delete">
                                 <ItemTemplate>
-                                    <asp:Button ID="deletebtn" CssClass="btn btn-danger" runat="server" CommandName="Delete"
+                                    <asp:Button ID="deletebtn" CssClass="btn btn-danger btn-sm" runat="server" CommandName="Delete"
                                         Text="Delete" OnClientClick="return confirm('Are you sure?');" />
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -96,6 +116,7 @@
                 return false;
             }
             return true;
+        }
     </script>
 </asp:Content>
 
